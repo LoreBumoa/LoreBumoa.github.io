@@ -6,31 +6,45 @@
 
 <style>
 
-body{
+*{
 margin:0;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-background:white;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
 font-family:Helvetica, Arial, sans-serif;
 }
 
-.container{
+.hero{
+height:100vh;
+background-image:url('cover.JPG');
+background-size:cover;
+background-position:center;
+display:flex;
+justify-content:center;
+align-items:center;
+}
+
+.overlay{
 text-align:center;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(3px);
+padding:40px 80px;
+border-radius:10px;
 }
 
 h1{
 font-size:120px;
 font-weight:200;
-margin:0;
+color:white;
 }
 
 p{
 margin-top:20px;
-font-size:18px;
-letter-spacing:3px;
-color:#666;
+font-size:20px;
+letter-spacing:4px;
+color:white;
 }
 
 </style>
@@ -39,13 +53,17 @@ color:#666;
 
 <body>
 
-<div class="container">
+<section class="hero">
+
+<div class="overlay">
 
 <h1>流光</h1>
 
 <p>LoreBumoa</p>
 
 </div>
+
+</section>
 
 </body>
 </html>
