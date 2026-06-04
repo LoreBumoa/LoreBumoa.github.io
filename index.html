@@ -5,7 +5,6 @@
 <title>流光</title>
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -13,55 +12,119 @@ box-sizing:border-box;
 }
 
 body{
-font-family:Helvetica, Arial, sans-serif;
+font-family: "Times New Roman", "Hiragino Mincho ProN", "Yu Mincho", serif;
 }
 
 .hero{
 height:100vh;
-background-image:url('cover.JPG');
+background-image:linear-gradient(rgba(0,0,0,0.12),rgba(0,0,0,0.12)),url('cover.JPG');
 background-size:cover;
 background-position:center;
-display:flex;
-justify-content:center;
-align-items:center;
+position:relative;
+color:white;
 }
 
-.overlay{
+.logo{
+position:absolute;
+top:36px;
+left:42px;
+font-size:28px;
+letter-spacing:4px;
+font-weight:300;
+}
+
+.nav{
+position:absolute;
+top:42px;
+right:48px;
+font-family:Helvetica, Arial, sans-serif;
+font-size:13px;
+letter-spacing:4px;
+}
+
+.nav a{
+color:white;
+text-decoration:none;
+margin-left:34px;
+}
+
+.center{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
 text-align:center;
-background:rgba(255,255,255,0.15);
-backdrop-filter:blur(3px);
-padding:40px 80px;
-border-radius:10px;
 }
 
 h1{
-font-size:120px;
-font-weight:200;
-color:white;
+font-size:110px;
+font-weight:300;
+letter-spacing:28px;
+white-space:nowrap;
 }
 
-p{
-margin-top:20px;
-font-size:20px;
-letter-spacing:4px;
-color:white;
+.line{
+width:90px;
+height:1px;
+background:white;
+margin:26px auto 24px;
+opacity:0.7;
 }
 
+.name{
+font-family:Helvetica, Arial, sans-serif;
+font-size:15px;
+letter-spacing:12px;
+}
+
+.scroll{
+position:absolute;
+bottom:36px;
+left:50%;
+transform:translateX(-50%);
+font-family:Helvetica, Arial, sans-serif;
+font-size:12px;
+letter-spacing:5px;
+}
+
+@media(max-width:700px){
+h1{
+font-size:64px;
+letter-spacing:14px;
+}
+.logo{
+font-size:22px;
+left:24px;
+}
+.nav{
+right:24px;
+font-size:11px;
+}
+.nav a{
+margin-left:18px;
+}
+}
 </style>
-
 </head>
 
 <body>
 
 <section class="hero">
 
-<div class="overlay">
+<div class="logo">流光</div>
 
+<nav class="nav">
+<a href="works.html">WORKS</a>
+<a href="about.html">ABOUT</a>
+</nav>
+
+<div class="center">
 <h1>流光</h1>
-
-<p>LoreBumoa</p>
-
+<div class="line"></div>
+<div class="name">LOREBUMOA</div>
 </div>
+
+<div class="scroll">SCROLL</div>
 
 </section>
 
