@@ -5,7 +5,11 @@
 <title>Works | LoreBumoa</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
 body{
 font-family:Helvetica, Arial, sans-serif;
@@ -68,14 +72,36 @@ left:18px;
 bottom:16px;
 font-size:14px;
 letter-spacing:2px;
+line-height:1.5;
+text-shadow:0 1px 8px rgba(0,0,0,0.35);
+}
+
+.caption span{
+display:block;
+margin-top:6px;
+font-size:11px;
+letter-spacing:1px;
+opacity:0.85;
 }
 
 @media(max-width:900px){
-.grid{grid-template-columns:repeat(2,1fr);}
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
 }
 
 @media(max-width:500px){
-.grid{grid-template-columns:1fr;}
+.grid{
+grid-template-columns:1fr;
+}
+
+header{
+padding:28px 24px;
+}
+
+.title{
+padding:90px 24px 60px;
+}
 }
 </style>
 </head>
@@ -84,6 +110,7 @@ letter-spacing:2px;
 
 <header>
 <div>LoreBumoa</div>
+
 <nav>
 <a href="index.html">HOME</a>
 <a href="about.html">ABOUT</a>
@@ -94,24 +121,36 @@ letter-spacing:2px;
 
 <div class="grid">
 
-<a class="work" href="tokyo.html">
+<a class="work" href="past-days.html">
 <img src="cover.JPG">
-<div class="caption">流光・東京</div>
+<div class="caption">
+永逝的往日
+<span>Past Days</span>
+</div>
 </a>
 
-<a class="work" href="#">
+<a class="work" href="chongqing.html">
 <img src="cover.JPG">
-<div class="caption">千好万好，五光重庆</div>
+<div class="caption">
+千好万好，五光重庆
+<span>Chongqing</span>
+</div>
 </a>
 
-<a class="work" href="#">
+<a class="work" href="unfinished-summer.html">
 <img src="cover.JPG">
-<div class="caption">Portrait</div>
+<div class="caption">
+未完成の夏
+<span>Unfinished Summer</span>
+</div>
 </a>
 
-<a class="work" href="#">
+<a class="work" href="clod-prayer.html">
 <img src="cover.JPG">
-<div class="caption">小動物</div>
+<div class="caption">
+Clod Prayer
+<span>冷祷 / Snow Mountain</span>
+</div>
 </a>
 
 </div>
