@@ -14,16 +14,31 @@ box-sizing:border-box;
 body{
 background:#f6f6f6;
 color:#111;
-font-family:"Times New Roman","Hiragino Mincho ProN","Yu Mincho",serif;
+font-family:Helvetica, Arial, sans-serif;
+animation:pageFadeIn 0.7s ease;
+}
+
+@keyframes pageFadeIn{
+from{
+opacity:0;
+}
+to{
+opacity:1;
+}
 }
 
 header{
+position:fixed;
+top:0;
+left:0;
+width:100%;
 display:flex;
 justify-content:space-between;
-padding:36px 42px;
-font-family:Helvetica, Arial, sans-serif;
+align-items:center;
+padding:34px 42px;
 font-size:13px;
-letter-spacing:3px;
+letter-spacing:1px;
+z-index:10;
 }
 
 a{
@@ -31,59 +46,79 @@ color:#111;
 text-decoration:none;
 }
 
-.title{
-padding:120px 42px 100px;
-}
-
-.title h1{
-font-size:60px;
-font-weight:300;
-letter-spacing:8px;
-}
-
-.title p{
-margin-top:18px;
-color:#666;
-font-family:Helvetica, Arial, sans-serif;
+.nav-right button{
+background:none;
+border:none;
 font-size:13px;
-letter-spacing:2px;
+font-family:Helvetica, Arial, sans-serif;
+cursor:pointer;
+margin-left:24px;
+color:#111;
 }
 
-.photo{
+.viewer{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+padding:110px 40px 110px;
+}
+
+.photo-wrap{
 max-width:980px;
-margin:0 auto 120px;
-padding:0 30px;
-}
-
-.photo img{
 width:100%;
+text-align:center;
+}
+
+.photo-wrap img{
+max-width:100%;
+max-height:72vh;
+object-fit:contain;
 display:block;
+margin:0 auto;
+transition:opacity 0.45s ease;
 }
 
-.caption{
-margin-top:14px;
-font-family:Helvetica, Arial, sans-serif;
-font-size:12px;
+.photo-wrap img.fade-out{
+opacity:0;
+}
+
+.info{
+position:fixed;
+left:42px;
+bottom:34px;
+font-size:13px;
+line-height:1.8;
 letter-spacing:1px;
-color:#777;
 }
 
-.footer{
-padding:80px 42px;
-font-family:Helvetica, Arial, sans-serif;
+.title{
+font-family:"Times New Roman","Hiragino Mincho ProN","Yu Mincho",serif;
+font-size:18px;
+letter-spacing:3px;
+}
+
+.counter{
+color:#666;
 font-size:12px;
-letter-spacing:2px;
 }
 
 @media(max-width:700px){
-.title h1{
-font-size:40px;
-}
-.title{
-padding:90px 28px 70px;
-}
 header{
-padding:28px;
+padding:24px;
+}
+
+.viewer{
+padding:100px 20px 110px;
+}
+
+.info{
+left:24px;
+bottom:24px;
+}
+
+.photo-wrap img{
+max-height:65vh;
 }
 }
 </style>
@@ -92,23 +127,69 @@ padding:28px;
 <body>
 
 <header>
-<a href="index.html">LoreBumoa</a>
-<a href="works.html">WORKS</a>
+<a href="works.html">Index</a>
+
+<div class="nav-right">
+<button onclick="prevPhoto()">Back</button>
+<button onclick="nextPhoto()">Next</button>
+</div>
 </header>
 
-<section class="title">
-<h1>永逝的往日</h1>
-<p>Past Days</p>
-</section>
-
-<section class="photo">
-<img src="cover.JPG">
-<div class="caption">001</div>
-</section>
-
-<div class="footer">
-<a href="works.html">BACK TO WORKS</a>
+<main class="viewer">
+<div class="photo-wrap">
+<img id="mainPhoto" src="cover.JPG" alt="永逝的往日">
 </div>
+</main>
+
+<div class="info">
+<div class="title">永逝的往日</div>
+<div>Past Days</div>
+<div class="counter" id="counter">001 / 001</div>
+</div>
+
+<script>
+const photos = [
+  "cover.JPG"
+];
+
+let current = 0;
+
+const img = document.getElementById("mainPhoto");
+const counter = document.getElementById("counter");
+
+function updatePhoto(){
+  img.classList.add("fade-out");
+
+  setTimeout(() => {
+    img.src = photos[current];
+    counter.textContent =
+      String(current + 1).padStart(3, "0") +
+      " / " +
+      String(photos.length).padStart(3, "0");
+
+    img.classList.remove("fade-out");
+  }, 450);
+}
+
+function nextPhoto(){
+  current = (current + 1) % photos.length;
+  updatePhoto();
+}
+
+function prevPhoto(){
+  current = (current - 1 + photos.length) % photos.length;
+  updatePhoto();
+}
+
+document.addEventListener("keydown", function(event){
+  if(event.key === "ArrowRight"){
+    nextPhoto();
+  }
+  if(event.key === "ArrowLeft"){
+    prevPhoto();
+  }
+});
+</script>
 
 </body>
 </html>
